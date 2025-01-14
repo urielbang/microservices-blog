@@ -8,14 +8,22 @@ app.use(bodyParser.json());
 app.post("/events", (req, res) => {
   const event = req.body;
 
-  axios.post("http://localhost:4000/events", event); // posts sever
-  axios.post("http://localhost:4001/events", event); // comments server
-  axios.post("http://localhost:4002/events", event); // query server
-  axios.post("http://localhost:4003/events", event); // moderation server
+  axios.post("http://localhost:4000/events", event).catch((err) => {
+    console.log(err.message);
+  });
+  axios.post("http://localhost:4001/events", event).catch((err) => {
+    console.log(err.message);
+  });
+  axios.post("http://localhost:4002/events", event).catch((err) => {
+    console.log(err.message);
+  });
+  axios.post("http://localhost:4003/events", event).catch((err) => {
+    console.log(err.message);
+  });
 
-  res.send({ status: "ok" });
+  res.send({ status: "OK" });
 });
 
 app.listen(4005, () => {
-  console.log("listening on 4005");
+  console.log("Listening on 4005");
 });
